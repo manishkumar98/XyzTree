@@ -10,7 +10,22 @@ function App() {
   const data = useSelector((state) => state);
   console.log({ data });
   const renderTree = (nodes) => (
-    <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+    <TreeItem
+      key={nodes.id}
+      nodeId={nodes.id}
+      label={
+        <div>
+          {nodes.name + " " + nodes.counter + " "}
+          <button>+</button>
+
+          <a href="#" style={{ color: "black", textDecoration: "none" }}>
+            ×
+          </a>
+          <a href="#">Add child</a>
+        </div>
+      }
+      counter={nodes.counter}
+    >
       {Array.isArray(nodes.children)
         ? nodes.children.map((node) => renderTree(node))
         : null}

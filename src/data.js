@@ -1,36 +1,45 @@
 let data = {
-  id: "root",
-  name: "Subjects",
+  id: "0",
+  name: "Counter",
+  counter: 0,
   children: [
     {
       id: "p",
-      name: "Physics"
+      name: "Counter",
+      counter: 0,
+      children: []
     },
     {
       id: "c",
-      name: "Chemistry",
+      name: "Counter",
+      counter: 0,
       children: [
         {
           id: "pc",
-          name: "Physical Chemistry"
+          name: "Counter",
+          counter: 0
         },
         {
           id: "oc",
-          name: "Organic Chemisty"
+          name: "Counter",
+          counter: 0
         }
       ]
     },
     {
       id: "m",
-      name: "math",
+      name: "Counter",
+      counter: 0,
       children: [
         {
           id: "m1",
-          name: "Determinant"
+          name: "Counter",
+          counter: 0
         },
         {
           id: "m2",
-          name: "Matrices"
+          name: "Counter",
+          counter: 0
         }
       ]
     }
