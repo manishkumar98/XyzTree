@@ -8,6 +8,44 @@ function reducers(state = data, action) {
     // while()
     // state.counter = state.counter + 1;
     //Array.isArray(state.children)? state.children.map((elem) =>elem.id === action.id.id? action.counter = action.counter + 1));
+
+    /*const flatten=(acc,data)=>{
+      if(Array.isArray(data)){
+        return data.reduce(flatten,acc);
+      }
+      return [...acc,data];
+    }
+    let data1=data.reduce(flatten,[]);
+    console.log(data1);*/
+    let stack = [];
+    //let state1 = { ...state };
+    let state1 = { ...state };
+    console.log(state === state1);
+    stack.push(state1);
+    console.log("de", state1);
+    console.log("stack", stack.length);
+    while (stack.length > 0) {
+      var nodex = stack.pop();
+      console.log("stack1", nodex);
+      if (nodex.children) {
+        var len = nodex.children.length;
+        console.log("stack2", len);
+        for (var i = 0; i < len; i++) {
+          console.log("stack3", nodex.children[i].id);
+          if (nodex.children[i].id === action.id) {
+            nodex.children[i].counter = +1;
+            return;
+          } else if (
+            nodex.children[i].children &&
+            nodex.children[i].children.length > 0
+          ) {
+            stack.push(nodex.children[i]);
+          }
+        }
+      }
+    }
+    console.log("x", state1 === state);
+
     console.log("ddd", data);
     console.log("xyz2", state.counter);
     console.log("abc", action.id);
@@ -17,17 +55,24 @@ function reducers(state = data, action) {
     console.log("deed", state.children);
     //console.log("hghg",action.children)
     // if(Array.isArray(state.children))
-
-    return {
+    /*return {
+      ...state,
+      children: state.children.reduce((elem) =>
+        elem.id === action.id.id ? { ...elem, counter: elem.counter + 1 } : elem
+      )
+    };*/
+    /* return {
       ...state,
       children: state.children.map((elem) =>
         elem.id === action.id.id ? { ...elem, counter: elem.counter + 1 } : elem
       )
-    };
+    }*/
+    return state;
   } else {
     return state;
   }
 }
+
 export default reducers;
 /*{id: "0", name: "Counter", counter: 0, children: Array(3)}
 id: "0"
@@ -59,3 +104,9 @@ children: Array(3)*/
    8 |     state.counter = state.counter + 1;
    9 |
   10 |     console.log("xyz2", state.counter);*/
+/* return {
+      ...state,
+      children: state.children.map((elem) =>
+        elem.id === action.id.id ? { ...elem, counter: elem.counter + 1 } : elem
+      )
+    };*/
