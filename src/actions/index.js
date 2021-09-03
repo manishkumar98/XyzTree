@@ -1,4 +1,5 @@
-export const increment = (id) => ({
+export const increment = (id, counter) => ({
   type: "INCREMENT",
-  id
+  id,
+  counter
 });
