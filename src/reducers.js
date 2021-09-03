@@ -44,6 +44,7 @@ function reducers(state = data, action) {
         }
       }
     }
+    console.log("des", state1);
     console.log("x", state1 === state);
 
     console.log("ddd", data);
