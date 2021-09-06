@@ -29,7 +29,7 @@ function reducers(state = data, action) {
       console.log("stack1", nodex);
       if (nodex.id === action.id.id) {
         nodex.counter += 1;
-        //break;
+        break;
       }
 
       if (nodex.children) {
@@ -38,11 +38,13 @@ function reducers(state = data, action) {
         for (var i = 0; i < len; i++) {
           console.log("stack3", nodex.children[i].id);
           console.log("stacxx", action.id.id);
-          if (nodex.children[i].id === action.id.id) {
+            stack.push(nodex.children[i]);
+          /* if (nodex.children[i].id === action.id.id) {
             nodex.children[i].counter = +1;
             console.log("asd", nodex.children[i].counter);
-            return;
-          } else if (
+            // return;
+            break;
+          } else */ if (
             nodex.children[i].children &&
             nodex.children[i].children.length > 0
           ) {
@@ -75,9 +77,9 @@ function reducers(state = data, action) {
         elem.id === action.id.id ? { ...elem, counter: elem.counter + 1 } : elem
       )
     }*/
+    console.log("woe", state1);
     return state1;
-  }
-  return state;
+  } else return state;
 }
 
 export default reducers;

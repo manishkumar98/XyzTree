@@ -19,7 +19,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   // console.log("alpha",increment.id)
   return {
-    increment: (id, counter) => dispatch(increment(id, counter))
+    increment: (id) => {
+      //console.log("zxc", id, counter);
+      dispatch(increment(id));
+    }
   };
 };
 const App = (props) => {
@@ -84,3 +87,17 @@ const App = (props) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 //export default App;
+//{
+/* 1:{
+    id:1,
+    counter:0,
+    child:[2],
+
+  },
+  2:{
+    id:2,
+    counter:0,
+    child:[],
+  }
+
+}*/
